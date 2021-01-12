@@ -21,9 +21,9 @@ SHELL	= /bin/bash
 CC      = gcc
 INCLUDE = -Iinclude -I/home/ark/Development/SDL/include -idirafter /home/ark/Development/SDL/src/video/khronos
 CFLAGS  = -g -O3 -DUSING_GENERATED_CONFIG_H
-EXTRA_CFLAGS = -Iinclude -I/home/ark/Development/SDL/include -idirafter /home/ark/Development/SDL/src/video/khronos  -Wall -fno-strict-aliasing -fvisibility=hidden -Wdeclaration-after-statement -Werror=declaration-after-statement  -DMESA_EGL_NO_X11_HEADERS -DEGL_NO_X11 -I/usr/include/libdrm   -I$(gen) -I/usr/include/dbus-1.0 -I/usr/lib/aarch64-linux-gnu/dbus-1.0/include -I/home/ark/Development/SDL/src/hidapi/hidapi -D_REENTRANT -DHAVE_LINUX_VERSION_H
+EXTRA_CFLAGS = -Iinclude -I/home/ark/Development/SDL/include -idirafter /home/ark/Development/SDL/src/video/khronos  -Wall -fno-strict-aliasing -fvisibility=hidden -Wdeclaration-after-statement -Werror=declaration-after-statement  -DMESA_EGL_NO_X11_HEADERS -DEGL_NO_X11 -I/usr/include/libdrm -I/home/ark/Development/mesa/release/include  -I$(gen) -I/usr/include/dbus-1.0 -I/usr/lib/aarch64-linux-gnu/dbus-1.0/include -I/home/ark/Development/SDL/src/hidapi/hidapi -D_REENTRANT -DHAVE_LINUX_VERSION_H
 LDFLAGS = 
-EXTRA_LDFLAGS =  -Wl,--no-undefined -lm -ldl -lrga -lpthread -lrt
+EXTRA_LDFLAGS =  -Wl,--no-undefined -lm -ldl -lrga -ldrm -L/home/ark/Development/mesa/release/lib/aarch64-linux-gnu -lgbm -lpthread -lrt
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 INSTALL = /usr/bin/install -c
 AR	= ar

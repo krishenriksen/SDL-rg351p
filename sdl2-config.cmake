@@ -15,7 +15,7 @@ if(NOT TARGET SDL2::SDL2)
   # This may require "libdir" beeing set (from above)
   string(REPLACE "-lSDL2 " "" SDL2_EXTRA_LINK_FLAGS "-Wl,-rpath,${libdir} -Wl,--enable-new-dtags -lSDL2 ")
   string(STRIP "${SDL2_EXTRA_LINK_FLAGS}" SDL2_EXTRA_LINK_FLAGS)
-  string(REPLACE "-lSDL2 " "" SDL2_EXTRA_LINK_FLAGS_STATIC " -Wl,--no-undefined -lm -ldl -lrga -lpthread -lrt ")
+  string(REPLACE "-lSDL2 " "" SDL2_EXTRA_LINK_FLAGS_STATIC " -Wl,--no-undefined -lm -ldl -lrga -ldrm -L/home/ark/Development/mesa/release/lib/aarch64-linux-gnu -lgbm -lpthread -lrt ")
   string(STRIP "${SDL2_EXTRA_LINK_FLAGS_STATIC}" SDL2_EXTRA_LINK_FLAGS_STATIC)
 
   add_library(SDL2::SDL2 SHARED IMPORTED)

@@ -49,7 +49,7 @@ while test $# -gt 0; do
       ;;
     --static-libs)
 #    --libs|--static-libs)
-      echo -L/usr/local/lib/aarch64-linux-gnu -lSDL2  -Wl,--no-undefined -lm -ldl -lrga -lpthread -lrt
+      echo -L/usr/local/lib/aarch64-linux-gnu -lSDL2  -Wl,--no-undefined -lm -ldl -lrga -ldrm -L/home/ark/Development/mesa/release/lib/aarch64-linux-gnu -lgbm -lpthread -lrt
       ;;
     *)
       echo "${usage}" 1>&2

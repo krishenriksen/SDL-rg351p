@@ -843,7 +843,7 @@ fi
 
 
 
-SUMMARY="SDL2 Configure Summary:\nBuilding Shared Libraries\nBuilding Static Libraries\nEnabled modules : atomic audio video render events joystick haptic sensor power filesystem threads timers file loadso cpuinfo assembly\nAssembly Math   :\nAudio drivers   : disk dummy oss alsa(dynamic)\nVideo drivers   : dummy kmsdrm(dynamic) opengl_es1 opengl_es2 vulkan wayland(dynamic)\nInput drivers   : linuxev linuxkd\nEnable virtual joystick APIs : YES\nUsing libsamplerate : NO\nUsing libudev       : YES\nUsing dbus          : YES\nUsing ime           : YES\nUsing ibus          : NO\nUsing fcitx         : YES\n"
+SUMMARY="SDL2 Configure Summary:\nBuilding Shared Libraries\nBuilding Static Libraries\nEnabled modules : atomic audio video render events joystick haptic sensor power filesystem threads timers file loadso cpuinfo assembly\nAssembly Math   :\nAudio drivers   : disk dummy oss alsa(dynamic)\nVideo drivers   : dummy kmsdrm opengl_es1 opengl_es2 vulkan wayland(dynamic)\nInput drivers   : linuxev linuxkd\nEnable virtual joystick APIs : YES\nUsing libsamplerate : NO\nUsing libudev       : YES\nUsing dbus          : YES\nUsing ime           : YES\nUsing ibus          : NO\nUsing fcitx         : YES\n"
 
 
 # Handling of arguments.
@@ -927,11 +927,12 @@ echo 'BEGIN {' >"$ac_tmp/subs1.awk" &&
 cat >>"$ac_tmp/subs1.awk" <<\_ACAWK &&
 S["LTLIBOBJS"]=""
 S["WAYLAND_SCANNER"]="/usr/bin/wayland-scanner"
-S["EXTRA_LDFLAGS"]=" -Wl,--no-undefined -lm -ldl -lrga -lpthread -lrt"
+S["EXTRA_LDFLAGS"]=" -Wl,--no-undefined -lm -ldl -lrga -ldrm -L/home/ark/Development/mesa/release/lib/aarch64-linux-gnu -lgbm -lpthread -lrt"
 S["BUILD_LDFLAGS"]=""
 S["EXTRA_CFLAGS"]="-Iinclude -I/home/ark/Development/SDL/include -idirafter /home/ark/Development/SDL/src/video/khronos  -Wall -fno-strict-aliasing -fvisibility=hidden"\
-" -Wdeclaration-after-statement -Werror=declaration-after-statement  -DMESA_EGL_NO_X11_HEADERS -DEGL_NO_X11 -I/usr/include/libdrm   -I$(gen) -I/usr/i"\
-"nclude/dbus-1.0 -I/usr/lib/aarch64-linux-gnu/dbus-1.0/include -I/home/ark/Development/SDL/src/hidapi/hidapi -D_REENTRANT -DHAVE_LINUX_VERSION_H"
+" -Wdeclaration-after-statement -Werror=declaration-after-statement  -DMESA_EGL_NO_X11_HEADERS -DEGL_NO_X11 -I/usr/include/libdrm -I/home/ark/Develop"\
+"ment/mesa/release/include  -I$(gen) -I/usr/include/dbus-1.0 -I/usr/lib/aarch64-linux-gnu/dbus-1.0/include -I/home/ark/Development/SDL/src/hidapi/hid"\
+"api -D_REENTRANT -DHAVE_LINUX_VERSION_H"
 S["BUILD_CFLAGS"]="-g -O3 -DUSING_GENERATED_CONFIG_H"
 S["SDLTEST_OBJECTS"]="$(objects)/SDL_test_assert.lo $(objects)/SDL_test_common.lo $(objects)/SDL_test_compare.lo $(objects)/SDL_test_crc32.lo $(objects)/SDL_test_font.lo "\
 "$(objects)/SDL_test_fuzzer.lo $(objects)/SDL_test_harness.lo $(objects)/SDL_test_imageBlit.lo $(objects)/SDL_test_imageBlitBlend.lo $(objects)/SDL_t"\
@@ -986,7 +987,7 @@ S["ENABLE_SHARED_TRUE"]=""
 S["PKG_CONFIG_LIBS_PRIV"]="\n"\
 "Libs.private:"
 S["SDL_RLD_FLAGS"]="-Wl,-rpath,${libdir} -Wl,--enable-new-dtags"
-S["SDL_STATIC_LIBS"]=" -Wl,--no-undefined -lm -ldl -lrga -lpthread -lrt"
+S["SDL_STATIC_LIBS"]=" -Wl,--no-undefined -lm -ldl -lrga -ldrm -L/home/ark/Development/mesa/release/lib/aarch64-linux-gnu -lgbm -lpthread -lrt"
 S["SDL_LIBS"]="-lSDL2"
 S["SDL_CFLAGS"]=" -D_REENTRANT"
 S["INSTALL_SDL2_CONFIG"]="TRUE"
@@ -996,8 +997,8 @@ S["IBUS_LIBS"]=""
 S["IBUS_CFLAGS"]=""
 S["DBUS_LIBS"]="-ldbus-1"
 S["DBUS_CFLAGS"]="-I/usr/include/dbus-1.0 -I/usr/lib/aarch64-linux-gnu/dbus-1.0/include"
-S["LIBGBM_LIBS"]="-lgbm"
-S["LIBGBM_CFLAGS"]=""
+S["LIBGBM_LIBS"]="-L/home/ark/Development/mesa/release/lib/aarch64-linux-gnu -lgbm"
+S["LIBGBM_CFLAGS"]="-I/home/ark/Development/mesa/release/include"
 S["LIBDRM_LIBS"]="-ldrm"
 S["LIBDRM_CFLAGS"]="-I/usr/include/libdrm"
 S["DIRECTFB_LIBS"]=""
@@ -1314,9 +1315,6 @@ D["SDL_AUDIO_DRIVER_ALSA"]=" 1"
 D["SDL_AUDIO_DRIVER_ALSA_DYNAMIC"]=" \"libasound.so.2\""
 D["SDL_VIDEO_OPENGL_EGL"]=" 1"
 D["SDL_VIDEO_DRIVER_KMSDRM"]=" 1"
-D["SDL_VIDEO_DRIVER_KMSDRM_DYNAMIC"]=" \"libdrm.so.2\""
-D["SDL_VIDEO_DRIVER_KMSDRM_DYNAMIC_GBM"]=" \"libgbm.so.1\""
-D["HAVE_KMSDRM_SHARED"]=" \"TRUE\""
 D["SDL_VIDEO_OPENGL_EGL"]=" 1"
 D["SDL_VIDEO_OPENGL_ES"]=" 1"
 D["SDL_VIDEO_RENDER_OGL_ES"]=" 1"

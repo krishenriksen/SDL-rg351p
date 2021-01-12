@@ -11,5 +11,5 @@ Version: 2.0.15
 Requires:
 Conflicts:
 Libs: -L${libdir} -Wl,-rpath,${libdir} -Wl,--enable-new-dtags -lSDL2 
-Libs.private:  -Wl,--no-undefined -lm -ldl -lrga -lpthread -lrt
+Libs.private:  -Wl,--no-undefined -lm -ldl -lrga -ldrm -L/home/ark/Development/mesa/release/lib/aarch64-linux-gnu -lgbm -lpthread -lrt
 Cflags: -I${includedir}/SDL2  -D_REENTRANT
